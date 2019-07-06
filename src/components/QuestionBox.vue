@@ -55,6 +55,14 @@ export default {
     selectAnswer (index) {
       this.selectedAnswer = index;
     }
+  },
+  watch: {
+    currentQuestion: {
+      immediate: true,
+      handler () {
+      	this.selectedAnswer = null
+      }
+    }
   }
 }
 </script>
