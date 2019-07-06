@@ -1,14 +1,35 @@
 <template>
 	<div>
-		<h1>Questions here?</h1>
-		<hr>
-		<p>Answers List here</p>
-		<ul>
-			<li>Answer 1</li>
-			<li>Answer 2</li>
-			<li>Answer 3</li>
-			<li>Answer 4</li>
-		</ul>
+	  <b-jumbotron>
+	    <template slot="lead">
+	    	Questions here?
+	    </template>
+
+	    <hr class="my-4">
+
+
+		<b-list-group>
+		  <b-list-group-item>
+		  	Answer 1
+		  </b-list-group-item>
+		  <b-list-group-item>
+		  	Answer 2
+		  </b-list-group-item>
+		  <b-list-group-item>
+		  	Answer 3
+		  </b-list-group-item>
+		  <b-list-group-item>
+		  	Answer 4
+		  </b-list-group-item>
+		</b-list-group>
+
+	    <b-button variant="primary">
+			Submit
+		</b-button>
+	    <b-button variant="success">
+	    	Next
+	    </b-button>
+	  </b-jumbotron>
 	</div>
 </template>
 
@@ -22,13 +43,12 @@ export default {
 </script>
 
 <style scoped>
-	ul {
-		width: 50%;
-		margin: 0 auto;
-		list-style-type: none;
+	.list-group {
+		margin-bottom: 15px;
 	}
 
-	li {
-		padding: 5px;
+	.list-group-item:hover {
+		background: #EEE;
+		cursor: pointer;
 	}
 </style>
