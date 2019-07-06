@@ -7,6 +7,7 @@
           <QuestionBox
             v-if="questions.length"
             :currentQuestion="questions[index]"
+            :next="next"
           />
         </b-col>
       </b-row>
@@ -37,6 +38,11 @@ export default {
     })
       .then(res => res.json())
       .then(jsonData => { this.questions = jsonData.results })
+  },
+  methods: {
+    next () {
+      this.index++;
+    }
   }
 }
 </script>

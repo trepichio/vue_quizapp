@@ -22,7 +22,9 @@
 	    <b-button variant="primary">
 			Submit
 		</b-button>
-	    <b-button variant="success">
+	    <b-button variant="success"
+	    	@click.prevent="next"
+	    >
 	    	Next
 	    </b-button>
 	  </b-jumbotron>
@@ -35,7 +37,8 @@ export default {
 
   name: 'QuestionBox',
   props: {
-  	currentQuestion: Object
+  	currentQuestion: Object,
+  	next: Function,
   },
   computed: {
     answers () {
