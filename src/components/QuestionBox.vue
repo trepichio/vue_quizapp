@@ -51,4 +51,8 @@ export default {
 		background: #EEE;
 		cursor: pointer;
 	}
+
+	.btn {
+		margin: 0 5px;		
+	}
 </style>
