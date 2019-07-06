@@ -9,17 +9,11 @@
 
 
 		<b-list-group>
-		  <b-list-group-item>
-		  	Answer 1
-		  </b-list-group-item>
-		  <b-list-group-item>
-		  	Answer 2
-		  </b-list-group-item>
-		  <b-list-group-item>
-		  	Answer 3
-		  </b-list-group-item>
-		  <b-list-group-item>
-		  	Answer 4
+		  <b-list-group-item
+		  	v-for="(answer, index) in answers"
+		  	:key="index"
+		  >
+		  	{{ answer }}
 		  </b-list-group-item>
 		</b-list-group>
 
@@ -41,7 +35,12 @@ export default {
   props: {
   	currentQuestion: Object
   },
-  
+  computed: {
+    answers () {
+		let answers = [...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answer];
+	    return answers;
+    }
+  }
 }
 </script>
 
