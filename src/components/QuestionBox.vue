@@ -12,6 +12,8 @@
 		  <b-list-group-item
 		  	v-for="(answer, index) in answers"
 		  	:key="index"
+		  	@click.prevent="selectAnswer(index)"
+		  	:class="[selectedAnswer === index && 'selected']"
 		  >
 		  	{{ answer }}
 		  </b-list-group-item>
@@ -40,6 +42,16 @@ export default {
 		let answers = [...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answer];
 	    return answers;
     }
+  },
+  data () {
+    return {
+      selectedAnswer: null
+    };
+  },
+  methods: {
+    selectAnswer (index) {
+      this.selectedAnswer = index;
+    }
   }
 }
 </script>
@@ -56,5 +68,9 @@ export default {
 
 	.btn {
 		margin: 0 5px;		
+	}
+
+	.selected {
+		background: lightblue;
 	}
 </style>
