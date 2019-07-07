@@ -12,6 +12,7 @@
             :currentQuestion="questions[index]"
             :next="next"
             :increment="increment"
+            :lastQuestion="lastQuestion <= index"
           />
         </b-col>
       </b-row>
@@ -34,7 +35,8 @@ export default {
       questions: [],
       index: 0,
       numCorrect: 0,
-      numTotal: 0
+      numTotal: 0,
+      lastQuestion: false
     };
   },
   mounted: function () {
@@ -43,7 +45,10 @@ export default {
       method: 'get'
     })
       .then(res => res.json())
-      .then(jsonData => { this.questions = jsonData.results })
+      .then(jsonData => { 
+        this.questions = jsonData.results
+        this.lastQuestion = this.questions.length - 1;
+      })
   },
   methods: {
     next () {

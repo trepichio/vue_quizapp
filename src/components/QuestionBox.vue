@@ -28,6 +28,7 @@
 		</b-button>
 	    <b-button variant="success"
 	    	@click.prevent="next"
+	    	:disabled="lastQuestion"
 	    >
 	    	Next
 	    </b-button>
@@ -43,7 +44,8 @@ export default {
   props: {
   	currentQuestion: Object,
   	next: Function,
-  	increment: Function
+  	increment: Function,
+  	lastQuestion: Boolean
   },
   computed: {
     answers () {
