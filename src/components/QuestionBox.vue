@@ -13,7 +13,7 @@
 		  	v-for="(answer, index) in answers"
 		  	:key="index"
 		  	@click.prevent="selectAnswer(index)"
-		  	:class="[selectedAnswer === index && 'selected']"
+		  	:class="answerClass(index)"
 		  	:disabled="answersed"
 		  >
 		  	{{ answer }}
@@ -68,6 +68,16 @@ export default {
     	isCorrect = this.selectedAnswer === this.correctIndex;
     	this.increment(isCorrect);
     	this.answersed = true;
+    },
+    answerClass (index) {
+
+    	if (!this.answersed) {
+	    	return (index === this.selectedAnswer) && 'selected';
+    	}
+	    else {
+    		if (index === this.selectedAnswer && index !== this.correctIndex) return 'incorrect'
+    		if (index === this.correctIndex) return 'correct';
+	    } 
     }
   },
   watch: {
@@ -99,4 +109,13 @@ export default {
 	.selected {
 		background: lightblue;
 	}
+
+	.correct {
+		background: lightgreen;
+	}
+
+	.incorrect {
+		background: red;
+	}
+
 </style>
