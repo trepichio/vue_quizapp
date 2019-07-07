@@ -123,4 +123,8 @@ export default {
 		background: red;
 	}
 
+	.lead {
+		font-size: 1.7rem;
+	}
+
 </style>
