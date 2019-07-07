@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import shuffle from 'lodash.shuffle'
 
 export default {
 
@@ -51,7 +51,7 @@ export default {
   computed: {
     answers () {
 		let answers = [...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answer];
-		let shuffledAnswers = _.shuffle(answers);
+		let shuffledAnswers = shuffle(answers);
 		this.correctIndex = shuffledAnswers.indexOf(this.currentQuestion.correct_answer);
 	    
 	    return shuffledAnswers;
