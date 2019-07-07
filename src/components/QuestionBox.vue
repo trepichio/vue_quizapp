@@ -14,12 +14,16 @@
 		  	:key="index"
 		  	@click.prevent="selectAnswer(index)"
 		  	:class="[selectedAnswer === index && 'selected']"
+		  	:disabled="answersed"
 		  >
 		  	{{ answer }}
 		  </b-list-group-item>
 		</b-list-group>
 
-	    <b-button variant="primary">
+	    <b-button variant="primary"
+	    	@click.prevent="submitAnswer"
+	    	:disabled="answersed || selectedAnswer === null"
+	    >
 			Submit
 		</b-button>
 	    <b-button variant="success"
@@ -39,28 +43,39 @@ export default {
   props: {
   	currentQuestion: Object,
   	next: Function,
+  	increment: Function
   },
   computed: {
     answers () {
 		let answers = [...this.currentQuestion.incorrect_answers, this.currentQuestion.correct_answer];
+    	this.correctIndex = answers.indexOf(this.currentQuestion.correct_answer);
 	    return answers;
     }
   },
   data () {
     return {
-      selectedAnswer: null
+      selectedAnswer: null,
+      answersed: false,
+      correctIndex: null
     };
   },
   methods: {
     selectAnswer (index) {
       this.selectedAnswer = index;
+    },
+    submitAnswer () {
+    	let isCorrect = false;
+    	isCorrect = this.selectedAnswer === this.correctIndex;
+    	this.increment(isCorrect);
+    	this.answersed = true;
     }
   },
   watch: {
     currentQuestion: {
       immediate: true,
       handler () {
-      	this.selectedAnswer = null
+      	this.selectedAnswer = null,
+      	this.answersed = false
       }
     }
   }
